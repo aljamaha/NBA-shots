@@ -52,6 +52,19 @@ print('Players with most shots ...')
 print(clutch_data['player_name'].value_counts()[0:10])
 clutch_players = ['andre drummond','deandre jordan','goran dragic','russell westbrook','lebron james','eric bledsoe','enes kanter','stephen curry']
 
+y_values = []
+for i in clutch_data['player_name'].value_counts()[0:8]:
+	print(i)
+	y_values.append(i)
+	
+'Second Figure'
+plt.rcdefaults()
+fig, ax = plt.subplots()
+ax.barh(clutch_players, y_values)
+plt.gca().invert_yaxis()
+plt.xlabel('Number of Shots')
+plt.show()
+
 'data frame for each clutch player in a dictionary'
 players = {}
 for player in clutch_players:
