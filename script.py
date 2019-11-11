@@ -17,31 +17,26 @@ print('Data Size: ', data.shape)
 'remove nan data'
 data = data.dropna()
 
-'Data Exploration'
 '''
+'Data Exploration'
 ax = plt.figure(1)
 plt.title('Shot Clock')
 plt.hist(data['SHOT_CLOCK'], bins='auto')
-
 ax = plt.figure(2)
 plt.title('Shot Distance')
 plt.hist(data['SHOT_DIST'], bins='auto')
-
 ax = plt.figure(3)
 plt.title('Dribbles')
 plt.hist(data['DRIBBLES'], bins='auto')
-
 ax = plt.figure(4)
 plt.title('TOUCH_TIME' )
 plt.hist(data['TOUCH_TIME'], bins='auto')
 plt.xlim([0,20])
-
 ax = plt.figure(5)
 plt.title('CLOSE_DEF_DIST')
 plt.hist(data['CLOSE_DEF_DIST'], bins='auto')
 plt.xlim([0, 20])
 #plt.show()
-
 #plt.savefig('test.pdf')
 '''
 
@@ -51,20 +46,29 @@ print('Players with most shots ...')
 print(clutch_data['player_name'].value_counts()[0:10])
 clutch_players = ['andre drummond','deandre jordan','goran dragic','russell westbrook','lebron james','eric bledsoe','enes kanter','stephen curry']
 
+'data frame for each clutch player in a dictionary'
 players = {}
+for player in clutch_players:
+	players[player] = clutch_data[clutch_data['player_name'] == player]
 
-for index, player in enumerate(clutch['player_name'].value_counts()):
-	players[player] = data[data['player_name'] == player]
-	print(player)
-	if index>8:
-		break
+'Mean data for each clutch player'
+mean_clutch = {}
+for player in players:
+	mean_clutch[player] = players[player].mean()
 
-print(clutch_data.groupby(['player_name']).mean())
-print(players['deandre jordan'])
-#DJ = data[data['player_name'] == 'deandre jordan']
+descriptors = ['SHOT_DIST','DRIBBLES','TOUCH_TIME','PTS']
 
+for d in descriptors:
+	print('----'+d+'----')
+	for player in players:
+		print(player, mean_clutch[player][d])
+		#print(player, '  ', mean_clutch[player]['Made'])
+
+#print(mean_clutch['stephen curry'])
+#print(mean_clutch['stephen curry']['FINAL_MARGIN'])
 
 '''
+#print(clutch_data.groupby(['player_name']).mean())
 'Margin'#scaler = StandardScaler()
 #data_scaled = scaler.fit_transform(data)
 numerical = ['DRIBBLES']
@@ -81,30 +85,10 @@ print(data['DRIBBLES'][0:20])
 #print(scaler.fit_transform(a))
 #data['PERIOD'] = scaler.fit_transform(data['PERIOD'])
 #print(data['PERIOD'])
-'
 'Normalizing Data'
 'Location'
 #there are problems here
 #data[data['LOCATION'] == 'A'] = 1
 #data[data['LOCATION'] == 'H'] = 0
 #azdias[azdias['OST_WEST_KZ'] == 'W'] = 1''
-
-'Normalizing Data'
-'Location'
-#there are problems here
-#data[data['LOCATION'] == 'A'] = 1
-#data[data['LOCATION'] == 'H'] = 0
-#azdias[azdias['OST_WEST_KZ'] == 'W'] = 1
-'Normalizing Data'
-'Location'
-#there are problems here
-#data[data['LOCATION'] == 'A'] = 1
-#data[data['LOCATION'] == 'H'] = 0
-#azdias[azdias['OST_WEST_KZ'] == 'W'] = 1
-'Normalizing Data'
-'Location'
-#there are problems here
-#data[data['LOCATION'] == 'A'] = 1
-#data[data['LOCATION'] == 'H'] = 0
-#azdias[azdias['OST_WEST_KZ'] == 'W'] = 1
 '''
