@@ -47,9 +47,10 @@ plt.xlim([0, 20])
 #print(data['SHOT_CLOCK'])
 print(data.shape)
 clutch = data[data['SHOT_CLOCK'] > 20.0]
-print(clutch['player_name'].value_counts()[0:20])
+print('here .. ')
+print(clutch['player_name'].value_counts()[0:10])
+#players_list = 
 #print(data_slice['SHOT_CLOCK'])
-
 
 'Normalizing Data'
 'Location'
@@ -57,6 +58,17 @@ print(clutch['player_name'].value_counts()[0:20])
 #data[data['LOCATION'] == 'A'] = 1
 #data[data['LOCATION'] == 'H'] = 0
 #azdias[azdias['OST_WEST_KZ'] == 'W'] = 1
+
+players = {}
+
+for index, player in enumerate(clutch['player_name'].value_counts()):
+	players[player] = data[data['player_name'] == player]
+	print(player)
+	if index>8:
+		break
+
+print(players['deandre jordan'])
+#DJ = data[data['player_name'] == 'deandre jordan']
 
 
 
