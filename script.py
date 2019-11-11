@@ -56,16 +56,29 @@ mean_clutch = {}
 for player in players:
 	mean_clutch[player] = players[player].mean()
 
+'choices I made for descriptors'
 descriptors = ['SHOT_DIST','DRIBBLES','TOUCH_TIME','PTS']
 
+def sort_data(players, desc):
+	'sort data of players from lowest to highest'
+	data = {}
+	sorted_data = {}
+	for player in players:
+		data[player] = mean_clutch[player][desc]
+	for i in sorted (data.values()):
+		for p in players:
+			if data[p] == i:
+				sorted_data[p] = i
+				break
+	return sorted_data
+
+'Data Analysis'
 for d in descriptors:
 	print('----'+d+'----')
-	for player in players:
-		print(player, mean_clutch[player][d])
-		#print(player, '  ', mean_clutch[player]['Made'])
+	new_data = sort_data(players, d)
+	for i in new_data:
+		print(i, new_data[i])
 
-#print(mean_clutch['stephen curry'])
-#print(mean_clutch['stephen curry']['FINAL_MARGIN'])
 
 '''
 #print(clutch_data.groupby(['player_name']).mean())
