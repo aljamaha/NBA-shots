@@ -17,28 +17,34 @@ print('Data Size: ', data.shape)
 'remove nan data'
 data = data.dropna()
 
-'''
 'Data Exploration'
+lab = 12
+tit = 12
+
 ax = plt.figure(1)
-plt.title('Shot Clock')
+plt.rcParams['figure.figsize'] = (20, 20)
+
+plt.subplot(2,2,1)
+plt.title('Shot Clock (s)', fontsize=tit, y=0.80)
 plt.hist(data['SHOT_CLOCK'], bins='auto')
-ax = plt.figure(2)
-plt.title('Shot Distance')
+#plt.xlabel('Time (s)', fontsize=lab)
+
+plt.subplot(2,2,2)
+plt.title('Shot Distance (ft)', fontsize=tit, y=0.8)
 plt.hist(data['SHOT_DIST'], bins='auto')
-ax = plt.figure(3)
-plt.title('Dribbles')
-plt.hist(data['DRIBBLES'], bins='auto')
-ax = plt.figure(4)
-plt.title('TOUCH_TIME' )
+plt.xlim([0,35])
+
+plt.subplot(2,2,3)
+plt.title('Touch Time (s)', y=0.8)
 plt.hist(data['TOUCH_TIME'], bins='auto')
 plt.xlim([0,20])
-ax = plt.figure(5)
-plt.title('CLOSE_DEF_DIST')
+
+plt.subplot(2,2,4)
+plt.title('Closest Defender Distance (ft)', y=0.8)
 plt.hist(data['CLOSE_DEF_DIST'], bins='auto')
 plt.xlim([0, 20])
-#plt.show()
+plt.show()
 #plt.savefig('test.pdf')
-'''
 
 'Clutch players'
 clutch_data = data[data['SHOT_CLOCK'] > 20.0]
