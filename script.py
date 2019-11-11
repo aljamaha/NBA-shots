@@ -12,12 +12,13 @@ data = pd.read_csv('shot_logs.csv')
 data = data.drop(['GAME_ID','MATCHUP'], axis = 1)
 
 'data size'
-#print 'Data Size: ', data.shape
+print('Data Size: ', data.shape)
 
 'remove nan data'
 data = data.dropna()
 
 'Data Exploration'
+'''
 ax = plt.figure(1)
 plt.title('Shot Clock')
 plt.hist(data['SHOT_CLOCK'], bins='auto')
@@ -42,22 +43,13 @@ plt.xlim([0, 20])
 #plt.show()
 
 #plt.savefig('test.pdf')
+'''
 
 'Clutch players'
-#print(data['SHOT_CLOCK'])
-print(data.shape)
-clutch = data[data['SHOT_CLOCK'] > 20.0]
-print('here .. ')
-print(clutch['player_name'].value_counts()[0:10])
-#players_list = 
-#print(data_slice['SHOT_CLOCK'])
-
-'Normalizing Data'
-'Location'
-#there are problems here
-#data[data['LOCATION'] == 'A'] = 1
-#data[data['LOCATION'] == 'H'] = 0
-#azdias[azdias['OST_WEST_KZ'] == 'W'] = 1
+clutch_data = data[data['SHOT_CLOCK'] > 20.0]
+print('Players with most shots ...')
+print(clutch_data['player_name'].value_counts()[0:10])
+clutch_players = ['andre drummond','deandre jordan','goran dragic','russell westbrook','lebron james','eric bledsoe','enes kanter','stephen curry']
 
 players = {}
 
@@ -67,9 +59,9 @@ for index, player in enumerate(clutch['player_name'].value_counts()):
 	if index>8:
 		break
 
+print(clutch_data.groupby(['player_name']).mean())
 print(players['deandre jordan'])
 #DJ = data[data['player_name'] == 'deandre jordan']
-
 
 
 '''
@@ -89,4 +81,30 @@ print(data['DRIBBLES'][0:20])
 #print(scaler.fit_transform(a))
 #data['PERIOD'] = scaler.fit_transform(data['PERIOD'])
 #print(data['PERIOD'])
+'
+'Normalizing Data'
+'Location'
+#there are problems here
+#data[data['LOCATION'] == 'A'] = 1
+#data[data['LOCATION'] == 'H'] = 0
+#azdias[azdias['OST_WEST_KZ'] == 'W'] = 1''
+
+'Normalizing Data'
+'Location'
+#there are problems here
+#data[data['LOCATION'] == 'A'] = 1
+#data[data['LOCATION'] == 'H'] = 0
+#azdias[azdias['OST_WEST_KZ'] == 'W'] = 1
+'Normalizing Data'
+'Location'
+#there are problems here
+#data[data['LOCATION'] == 'A'] = 1
+#data[data['LOCATION'] == 'H'] = 0
+#azdias[azdias['OST_WEST_KZ'] == 'W'] = 1
+'Normalizing Data'
+'Location'
+#there are problems here
+#data[data['LOCATION'] == 'A'] = 1
+#data[data['LOCATION'] == 'H'] = 0
+#azdias[azdias['OST_WEST_KZ'] == 'W'] = 1
 '''
