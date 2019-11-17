@@ -4,9 +4,9 @@ Takinga and making shots late in the shot clock is an important aspect of an NBA
 
 Libraries needed: Python, Pandas , matplotlib, numpy, sklearn
 
-NBA_shots.ipynb: Jupyter notebook containing the entire code
+NBA_shots.ipynb: Jupyter notebook containing the entire code, how the data is treated and analyzed
 
-script.py: Python scrip
+script.py: Python scrip (similar to the jupyter notebok)
 
 shot_logs.csv: Data log 
 
