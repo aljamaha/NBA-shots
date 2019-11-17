@@ -10,3 +10,5 @@ NBA_shots.ipynb: Jupyter notebook containing the entire code
 script.py: Python scrip
 
 shot_logs.csv: Data log 
+
+The outcome shows many NBA centers, not traditionally critical for the offense, are taking an alarming number of shots late in the shot clock.
