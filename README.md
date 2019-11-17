@@ -5,9 +5,13 @@ It identifies the players taking the most shots late in the shot clock and provi
 
 Libraries needed:
 Python
+
 Pandas 
+
 matplotlib
+
 numpy
+
 sklearn
 
 Jupyter notebook: NBA_shots
